@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.model.Luong;
 import com.example.model.Yta;
 import com.example.repository.YtaRepository;
 import com.example.service.yta.YtaService;
@@ -62,5 +65,21 @@ public class YtaController {
 		}else {
 			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
 		}
+	}
+	@GetMapping(value = "/salary",produces = "application/json")
+	public ResponseEntity<?> tinhLuongYta(){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			List<Luong> listLuong = ytaService.tinhLuongYta(sdf.parse("2020-07-01"));
+			if(listLuong != null) {
+				return new ResponseEntity<>(listLuong,HttpStatus.OK);
+			}else {
+				return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
 	}
 }

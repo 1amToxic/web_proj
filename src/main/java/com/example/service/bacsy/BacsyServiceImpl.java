@@ -1,6 +1,7 @@
 package com.example.service.bacsy;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,13 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.model.Bacsy;
+import com.example.model.Luong;
 import com.example.repository.BacsyRepository;
 import com.example.repository.ChitietkhamRepository;
+import com.example.repository.LuongRepository;
 @Service
 public class BacsyServiceImpl implements BacsyService{
 	@Autowired
 	private BacsyRepository bacsyRepository;
-	private ChitietkhamRepository chitietkhamrepo;
+	@Autowired
+	private LuongRepository luongRepo;
 	@Override
 	public Bacsy addBacsy(Bacsy bacsy) {
 		Bacsy _bacsy =  this.bacsyRepository.save(bacsy);
@@ -45,6 +49,11 @@ public class BacsyServiceImpl implements BacsyService{
 	public List<Bacsy> getAllBacsy() {
 		List<Bacsy> listBacsy = this.bacsyRepository.findAll();
 		return listBacsy;
+	}
+
+	@Override
+	public List<Luong> tinhLuongBacsy(Date date) {
+		return luongRepo.tinhLuongBacsy(date);
 	}
 
 

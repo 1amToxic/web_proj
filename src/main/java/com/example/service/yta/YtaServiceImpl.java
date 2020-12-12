@@ -1,17 +1,22 @@
 package com.example.service.yta;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.model.Luong;
 import com.example.model.Yta;
+import com.example.repository.LuongRepository;
 import com.example.repository.YtaRepository;
 
 @Service
 public class YtaServiceImpl implements YtaService{
 	@Autowired
 	private YtaRepository ytaRepository;
+	@Autowired
+	private LuongRepository luongRepo;
 	@Override
 	public Yta addYta(Yta yta) {
 		Yta _yta = this.ytaRepository.save(yta);		
@@ -44,6 +49,11 @@ public class YtaServiceImpl implements YtaService{
 			isDeleted = true;
 		}
 		return isDeleted;
+	}
+
+	@Override
+	public List<Luong> tinhLuongYta(Date date) {
+		return luongRepo.tinhLuongYta(date);
 	}
 
 
