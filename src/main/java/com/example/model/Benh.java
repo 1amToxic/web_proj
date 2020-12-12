@@ -32,6 +32,6 @@ public class Benh implements Serializable{
 	@Column(name = "ten")
 	private String ten;
 	@JsonIgnore
-	@OneToMany(mappedBy = "benh",cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(mappedBy = "benh",cascade = CascadeType.ALL)
 	private List<Chitietkham> chitietkham;
 }

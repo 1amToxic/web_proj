@@ -52,7 +52,7 @@ public class Bacsy implements Serializable{
 	private String sdt;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "bacsy",cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(mappedBy = "bacsy",cascade = CascadeType.ALL)
 	private List<Chitietkham> chitietkham;
 	
 	

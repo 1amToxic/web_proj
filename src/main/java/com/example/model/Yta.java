@@ -97,9 +97,10 @@ public class Yta implements Serializable{
 		return chitietkham;
 	}
 	public void setChitietkham(List<Chitietkham> chitietkham) {
-		this.chitietkham = chitietkham;
+		this.chitietkham.clear();
+		this.chitietkham.addAll(chitietkham);
 	}
 	@JsonIgnore
-	@OneToMany(mappedBy = "yta",cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(mappedBy = "yta",cascade = CascadeType.ALL)
 	private List<Chitietkham> chitietkham;
 }

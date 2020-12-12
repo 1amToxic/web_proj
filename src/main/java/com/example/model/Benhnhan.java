@@ -41,7 +41,7 @@ public class Benhnhan implements Serializable{
 	private String sdt;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "benhnhan",cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(mappedBy = "benhnhan",cascade = CascadeType.ALL)
 	private List<Chitietkham> chitietkham;
 	
 	public String getCmt() {

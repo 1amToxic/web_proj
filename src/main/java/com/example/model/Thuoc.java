@@ -58,7 +58,7 @@ public class Thuoc implements Serializable{
 		this.chitietdonthuoc = chitietdonthuoc;
 	}
 	@JsonIgnore
-	@OneToMany(mappedBy = "thuoc",cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(mappedBy = "thuoc",cascade = CascadeType.ALL)
 	private List<Chitietdonthuoc> chitietdonthuoc;
 	
 }
