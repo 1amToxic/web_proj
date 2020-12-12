@@ -1,18 +1,23 @@
 package com.example.service.benhnhan;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.model.Bacsy;
 import com.example.model.Benhnhan;
+import com.example.model.ThongtinBenhnhan;
 import com.example.repository.BenhnhanRepository;
+import com.example.repository.ThongtinBNRepository;
 
 @Service
 public class BenhnhanServiceImpl implements BenhnhanService{
 	@Autowired
 	private BenhnhanRepository benhnhanRepository;
+	@Autowired
+	private ThongtinBNRepository thongtinRepo;
 	@Override
 	public Benhnhan addBenhnhan(Benhnhan benhnhan) {
 		Benhnhan _bacsy = this.benhnhanRepository.save(benhnhan);
@@ -43,6 +48,18 @@ public class BenhnhanServiceImpl implements BenhnhanService{
 	public List<Benhnhan> getAllBenhnhan() {
 		List<Benhnhan> listBenhnhan = this.benhnhanRepository.findAll();
 		return listBenhnhan;
+	}
+
+	@Override
+	public List<ThongtinBenhnhan> getAllThongTin() {
+		return thongtinRepo.getAllThongTin();
+	}
+
+	@Override
+	public List<Benhnhan> findBenhnhanByTen(String name) {
+		return this.benhnhanRepository.findAll().stream()
+				.filter(item ->item.getTen().toString().toLowerCase().contains(name.toLowerCase())).collect(Collectors.toList());	
+	
 	}
 
 }

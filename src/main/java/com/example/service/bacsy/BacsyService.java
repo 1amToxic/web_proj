@@ -12,4 +12,5 @@ public interface BacsyService {
 	public boolean deleteBacsy(int id);
 	public List<Bacsy> getAllBacsy();
 	public List<Luong> tinhLuongBacsy(Date date);
+	public List<Bacsy> findBacsyByName(String ten);
 }

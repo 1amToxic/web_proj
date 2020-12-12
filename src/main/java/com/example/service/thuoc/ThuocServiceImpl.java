@@ -2,6 +2,7 @@ package com.example.service.thuoc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,12 @@ public class ThuocServiceImpl implements ThuocService{
 	public List<Thuoc> getAllThuoc() {
 		List<Thuoc> listThuoc = this.thuocRepository.findAll();
 		return listThuoc;
+	}
+
+	@Override
+	public List<Thuoc> findThuocByTen(String ten) {
+		return this.thuocRepository.findAll().stream()
+				.filter(item ->item.getTen().toString().toLowerCase().contains(ten.toLowerCase())).collect(Collectors.toList());	
 	}
 
 }

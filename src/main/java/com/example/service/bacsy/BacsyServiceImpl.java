@@ -56,5 +56,12 @@ public class BacsyServiceImpl implements BacsyService{
 		return luongRepo.tinhLuongBacsy(date);
 	}
 
+	@Override
+	public List<Bacsy> findBacsyByName(String ten) {
+		return this.bacsyRepository.findAll().stream()
+				.filter(item ->item.getTen().toString().toLowerCase().contains(ten.toLowerCase())).collect(Collectors.toList());	
+	
+	}
+
 
 }

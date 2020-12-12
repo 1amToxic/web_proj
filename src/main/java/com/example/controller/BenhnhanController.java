@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.model.Bacsy;
 import com.example.model.Benhnhan;
+import com.example.model.ThongtinBenhnhan;
 import com.example.service.bacsy.BacsyService;
 import com.example.service.benhnhan.BenhnhanService;
 
@@ -60,6 +61,24 @@ public class BenhnhanController {
 		boolean isDeletedSuccess = this.benhnhanService.deleteBenhnhan(id);
 		if(isDeletedSuccess == true) {
 			return new ResponseEntity<>("delete successfully",HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
+		}
+	}
+	@GetMapping(value = "/allinfo",produces = "application/json")
+	public ResponseEntity<?> getAllThongTin(){
+		List<ThongtinBenhnhan> listThongTin = benhnhanService.getAllThongTin();
+		if(listThongTin!=null) {
+			return new ResponseEntity<>(listThongTin,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
+		}
+	}
+	@GetMapping(value = "/search",produces = "application/json")
+	public ResponseEntity<?> searchByName(@RequestParam String ten){
+		List<Benhnhan> listSearch = this.benhnhanService.findBenhnhanByTen(ten);
+		if(listSearch!=null) {
+			return new ResponseEntity<>(listSearch,HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
 		}

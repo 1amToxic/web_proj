@@ -2,6 +2,7 @@ package com.example.service.yta;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,13 @@ public class YtaServiceImpl implements YtaService{
 	@Override
 	public List<Luong> tinhLuongYta(Date date) {
 		return luongRepo.tinhLuongYta(date);
+	}
+
+	@Override
+	public List<Yta> findYtaByName(String ten) {
+		return this.ytaRepository.findAll().stream()
+			.filter(item ->item.getTen().toString().toLowerCase().contains(ten.toLowerCase())).collect(Collectors.toList());	
+	
 	}
 
 

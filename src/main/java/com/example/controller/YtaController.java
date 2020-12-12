@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.model.Bacsy;
 import com.example.model.Luong;
 import com.example.model.Yta;
 import com.example.repository.YtaRepository;
@@ -81,5 +82,14 @@ public class YtaController {
 			e.printStackTrace();
 		}
 		return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
+	}
+	@GetMapping(value = "/search",produces = "application/json")
+	public ResponseEntity<?> searchByName(@RequestParam String ten){
+		List<Yta> listSearch = this.ytaService.findYtaByName(ten);
+		if(listSearch!=null) {
+			return new ResponseEntity<>(listSearch,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
+		}
 	}
 }

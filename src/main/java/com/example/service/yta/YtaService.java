@@ -13,4 +13,5 @@ public interface YtaService {
 	public boolean deleteYta(int id);
 	public List<Yta> getAllYta();
 	public List<Luong> tinhLuongYta(Date date); 
+	public List<Yta> findYtaByName(String ten);
 }

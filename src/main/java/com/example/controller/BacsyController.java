@@ -84,4 +84,13 @@ public class BacsyController {
 		}
 		return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
 	}
+	@GetMapping(value = "/search",produces = "application/json")
+	public ResponseEntity<?> searchByName(@RequestParam String ten){
+		List<Bacsy> listSearch = this.bacsyService.findBacsyByName(ten);
+		if(listSearch!=null) {
+			return new ResponseEntity<>(listSearch,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
+		}
+	}
 }

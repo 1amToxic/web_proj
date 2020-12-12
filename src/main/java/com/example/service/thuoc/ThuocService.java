@@ -12,4 +12,5 @@ public interface ThuocService {
 	public Thuoc updateThuoc(Thuoc thuoc);
 	public boolean deleteThuoc(int id);
 	public List<Thuoc> getAllThuoc();
+	public List<Thuoc> findThuocByTen(String ten);
 }

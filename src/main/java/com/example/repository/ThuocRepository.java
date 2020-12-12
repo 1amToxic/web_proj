@@ -13,4 +13,5 @@ import com.example.model.Thuoc;
 
 @Repository
 public interface ThuocRepository extends JpaRepository<Thuoc, Integer>{
+	public List<Thuoc> findByTen(String ten);
 }

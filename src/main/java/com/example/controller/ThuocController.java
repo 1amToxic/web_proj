@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.model.Bacsy;
 import com.example.model.Thuoc;
 import com.example.service.thuoc.ThuocService;
 
@@ -60,6 +61,15 @@ public class ThuocController {
 		List<Thuoc> listThuoc = this.thuocService.getAllThuoc();
 		if(listThuoc != null) {
 			return new ResponseEntity<>(listThuoc,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
+		}
+	}
+	@GetMapping(value = "/search",produces = "application/json")
+	public ResponseEntity<?> searchByName(@RequestParam String ten){
+		List<Thuoc> listSearch = this.thuocService.findThuocByTen(ten);
+		if(listSearch!=null) {
+			return new ResponseEntity<>(listSearch,HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
 		}
