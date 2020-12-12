@@ -12,4 +12,5 @@ public interface BenhnhanService {
 	public List<Benhnhan> getAllBenhnhan();
 	public List<ThongtinBenhnhan> getAllThongTin();
 	public List<Benhnhan> findBenhnhanByTen(String name);
+	public Benhnhan findBenhnhanById(int id);
 }

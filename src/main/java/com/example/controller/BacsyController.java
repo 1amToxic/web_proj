@@ -93,4 +93,13 @@ public class BacsyController {
 			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
 		}
 	}
+	@GetMapping(value = "/{id}",produces = "application/json")
+	public ResponseEntity<?> findById(@PathVariable int id){
+		Bacsy _bacsy = this.bacsyService.findBacsyById(id);
+		if(_bacsy!=null) {
+			return new ResponseEntity<>(_bacsy,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
+		}
+	}
 }

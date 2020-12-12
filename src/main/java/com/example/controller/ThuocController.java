@@ -74,4 +74,13 @@ public class ThuocController {
 			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
 		}
 	}
+	@GetMapping(value = "/{id}",produces = "application/json")
+	public ResponseEntity<?> findById(@PathVariable int id){
+		Thuoc _thuoc = this.thuocService.findThuocById(id);
+		if(_thuoc!=null) {
+			return new ResponseEntity<>(_thuoc,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
+		}
+	}
 }

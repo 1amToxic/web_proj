@@ -83,4 +83,13 @@ public class BenhnhanController {
 			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
 		}
 	}
+	@GetMapping(value = "/{id}",produces = "application/json")
+	public ResponseEntity<?> findById(@PathVariable int id){
+		Benhnhan _benhnhan = this.benhnhanService.findBenhnhanById(id);
+		if(_benhnhan!=null) {
+			return new ResponseEntity<>(_benhnhan,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
+		}
+	}
 }

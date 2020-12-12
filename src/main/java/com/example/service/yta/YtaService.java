@@ -14,4 +14,5 @@ public interface YtaService {
 	public List<Yta> getAllYta();
 	public List<Luong> tinhLuongYta(Date date); 
 	public List<Yta> findYtaByName(String ten);
+	public Yta findYtaById(int id);
 }

@@ -13,4 +13,5 @@ public interface BacsyService {
 	public List<Bacsy> getAllBacsy();
 	public List<Luong> tinhLuongBacsy(Date date);
 	public List<Bacsy> findBacsyByName(String ten);
+	public Bacsy findBacsyById(int id);
 }

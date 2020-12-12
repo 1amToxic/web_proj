@@ -64,6 +64,11 @@ public class YtaServiceImpl implements YtaService{
 	
 	}
 
+	@Override
+	public Yta findYtaById(int id) {
+		return this.ytaRepository.findById(id).orElse(null);
+	}
+
 
 }
 

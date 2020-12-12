@@ -63,5 +63,10 @@ public class BacsyServiceImpl implements BacsyService{
 	
 	}
 
+	@Override
+	public Bacsy findBacsyById(int id) {
+		return this.bacsyRepository.findById(id).orElse(null);
+	}
+
 
 }

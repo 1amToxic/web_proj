@@ -52,4 +52,9 @@ public class ThuocServiceImpl implements ThuocService{
 				.filter(item ->item.getTen().toString().toLowerCase().contains(ten.toLowerCase())).collect(Collectors.toList());	
 	}
 
+	@Override
+	public Thuoc findThuocById(int id) {
+		return this.thuocRepository.findById(id).orElse(null);
+	}
+
 }

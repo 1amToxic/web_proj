@@ -92,4 +92,13 @@ public class YtaController {
 			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
 		}
 	}
+	@GetMapping(value = "/{id}",produces = "application/json")
+	public ResponseEntity<?> findById(@PathVariable int id){
+		Yta _yta = this.ytaService.findYtaById(id);
+		if(_yta!=null) {
+			return new ResponseEntity<>(_yta,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
+		}
+	}
 }

@@ -62,4 +62,9 @@ public class BenhnhanServiceImpl implements BenhnhanService{
 	
 	}
 
+	@Override
+	public Benhnhan findBenhnhanById(int id) {
+		return this.benhnhanRepository.findById(id).orElse(null);
+	}
+
 }
