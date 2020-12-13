@@ -6,9 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import com.example.model.Doanhthu;
 
 public interface DoanhthuRepository extends JpaRepository<Doanhthu, Integer>{
-	@Query(value = "select ct.id,sum(t.dongia*ctd.sl) as doanhthu from tblchitietkhamchua as ct \r\n"
-			+ "	inner join tbldonthuoc as dt on dt.mactk \r\n"
-			+ "    inner join tblchitietdonthuoc as ctd on ctd.madt = dt.id\r\n"
-			+ "    inner join tblthuoc as t on t.id = ctd.mat",nativeQuery = true)
+	@Query(value = "select ((select sum(kc.tienkham) from tblkhamchua as kc) +\r\n"
+			+ "(select sum(ct.sl*t.dongia) from	 tblchitietdonthuoc as ct\r\n"
+			+ "	inner join tblthuoc as t on t.id = ct.mat)) as doanhthu",nativeQuery = true)
 	public Doanhthu getDoanhthu();
 }

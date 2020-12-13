@@ -27,10 +27,11 @@ public class ThongtinBenhnhan {
 	private int id;
 	@Column(name = "ten")
 	private String ten;
-	@Column(name = "cmt")
-	private String cmt;
-	@Column(name = "trangthai")
-	private int trangthai;
+	@Column(name = "tenbenh")
+	private String tenbenh;
 	@Column(name = "solankham")
 	private int solankham;
+	@Column(name = "trangthai")
+	private int trangthai;
+
 }

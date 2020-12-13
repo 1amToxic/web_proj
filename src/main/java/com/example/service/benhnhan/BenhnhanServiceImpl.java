@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.model.Bacsy;
 import com.example.model.Benhnhan;
+import com.example.model.Khamchua;
 import com.example.model.ThongtinBenhnhan;
 import com.example.repository.BenhnhanRepository;
+import com.example.repository.KhamchuaRepository;
 import com.example.repository.ThongtinBNRepository;
 
 @Service
@@ -17,7 +19,7 @@ public class BenhnhanServiceImpl implements BenhnhanService{
 	@Autowired
 	private BenhnhanRepository benhnhanRepository;
 	@Autowired
-	private ThongtinBNRepository thongtinRepo;
+	private ThongtinBNRepository thongtinBnRepo;
 	@Override
 	public Benhnhan addBenhnhan(Benhnhan benhnhan) {
 		Benhnhan _benhnhan = this.benhnhanRepository.save(benhnhan);
@@ -50,10 +52,6 @@ public class BenhnhanServiceImpl implements BenhnhanService{
 		return listBenhnhan;
 	}
 
-	@Override
-	public List<ThongtinBenhnhan> getAllThongTin() {
-		return thongtinRepo.getAllThongTin();
-	}
 
 	@Override
 	public List<Benhnhan> findBenhnhanByTen(String name) {
@@ -64,5 +62,11 @@ public class BenhnhanServiceImpl implements BenhnhanService{
 	public Benhnhan findBenhnhanById(int id) {
 		return this.benhnhanRepository.findById(id).orElse(null);
 	}
+
+	@Override
+	public List<ThongtinBenhnhan> getAllKhamchuaByBenhnhan(int bnid) {
+		return this.thongtinBnRepo.getAllKhamChuaByBenhnhan(bnid);
+	}
+
 
 }

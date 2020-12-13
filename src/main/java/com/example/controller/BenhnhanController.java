@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.model.Bacsy;
 import com.example.model.Benhnhan;
+import com.example.model.Khamchua;
 import com.example.model.ThongtinBenhnhan;
+import com.example.repository.ThongtinBNRepository;
 import com.example.service.bacsy.BacsyService;
 import com.example.service.benhnhan.BenhnhanService;
 
@@ -28,6 +30,8 @@ import com.example.service.benhnhan.BenhnhanService;
 public class BenhnhanController {
 	@Autowired
 	private BenhnhanService benhnhanService;
+	@Autowired
+	private ThongtinBNRepository thongtinRepo;
 	@GetMapping(produces = "application/json")
 	public ResponseEntity<?> getAllBenhnhan(){
 		List<Benhnhan> _listBenhnhan = this.benhnhanService.getAllBenhnhan();
@@ -65,9 +69,10 @@ public class BenhnhanController {
 			return new ResponseEntity<>("fail",HttpStatus.SEE_OTHER);
 		}
 	}
-	@GetMapping(value = "/allinfo",produces = "application/json")
-	public ResponseEntity<?> getAllThongTin(){
-		List<ThongtinBenhnhan> listThongTin = benhnhanService.getAllThongTin();
+	@GetMapping(value = "/info/{id}",produces = "application/json")
+	public ResponseEntity<?> getAllThongTin(@PathVariable int id){
+		List<ThongtinBenhnhan> listThongTin = this.thongtinRepo.getAllKhamChuaByBenhnhan(id);
+		listThongTin.forEach(it -> {System.out.print(it.toString());});
 		if(listThongTin!=null) {
 			return new ResponseEntity<>(listThongTin,HttpStatus.OK);
 		}else {
