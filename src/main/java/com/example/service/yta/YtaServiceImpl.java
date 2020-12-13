@@ -59,9 +59,7 @@ public class YtaServiceImpl implements YtaService{
 
 	@Override
 	public List<Yta> findYtaByName(String ten) {
-		return this.ytaRepository.findAll().stream()
-			.filter(item ->item.getTen().toString().toLowerCase().contains(ten.toLowerCase())).collect(Collectors.toList());	
-	
+		return this.ytaRepository.searchYtaTheoTen(ten);
 	}
 
 	@Override

@@ -29,7 +29,7 @@ public class BenhnhanController {
 	@Autowired
 	private BenhnhanService benhnhanService;
 	@GetMapping(produces = "application/json")
-	public ResponseEntity<?> getAllBacsy(){
+	public ResponseEntity<?> getAllBenhnhan(){
 		List<Benhnhan> _listBenhnhan = this.benhnhanService.getAllBenhnhan();
 		if(_listBenhnhan != null) {
 			return new ResponseEntity<>(_listBenhnhan,HttpStatus.OK);

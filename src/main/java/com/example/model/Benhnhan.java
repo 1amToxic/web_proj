@@ -42,7 +42,7 @@ public class Benhnhan implements Serializable{
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "benhnhan",cascade = CascadeType.ALL)
-	private List<Chitietkham> chitietkham;
+	private List<Khamchua> khamchuas;
 	
 	public String getCmt() {
 		return cmt;
@@ -80,10 +80,11 @@ public class Benhnhan implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public List<Chitietkham> getChitietkham() {
-		return chitietkham;
+	public List<Khamchua> getKhamchuas() {
+		return khamchuas;
 	}
-	public void setChitietkham(List<Chitietkham> chitietkham) {
-		this.chitietkham = chitietkham;
+	public void setKhamchuas(List<Khamchua> khamchuas) {
+		this.khamchuas = khamchuas;
 	}
+	
 }

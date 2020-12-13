@@ -39,9 +39,7 @@ public class Chitietkham implements Serializable{
 	@ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name = "mabs", referencedColumnName = "id")
     private Bacsy bacsy;
-	@ManyToOne(fetch = FetchType.LAZY,optional = false)
-    @JoinColumn(name = "mabn", referencedColumnName = "id")
-    private Benhnhan benhnhan;
+	
 	@ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name = "mab", referencedColumnName = "id")
     private Benh benh;
@@ -82,14 +80,6 @@ public class Chitietkham implements Serializable{
 
 	public void setBacsy(Bacsy bacsy) {
 		this.bacsy = bacsy;
-	}
-
-	public Benhnhan getBenhnhan() {
-		return benhnhan;
-	}
-
-	public void setBenhnhan(Benhnhan benhnhan) {
-		this.benhnhan = benhnhan;
 	}
 
 	public Benh getBenh() {

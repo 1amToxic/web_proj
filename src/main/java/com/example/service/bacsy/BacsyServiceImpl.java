@@ -61,9 +61,7 @@ public class BacsyServiceImpl implements BacsyService{
 
 	@Override
 	public List<Bacsy> findBacsyByName(String ten) {
-		return this.bacsyRepository.findAll().stream()
-				.filter(item ->item.getTen().toString().toLowerCase().contains(ten.toLowerCase())).collect(Collectors.toList());	
-	
+		return this.bacsyRepository.searchBacsyTheoTen(ten);
 	}
 
 	@Override

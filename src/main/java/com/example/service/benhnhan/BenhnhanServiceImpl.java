@@ -20,8 +20,8 @@ public class BenhnhanServiceImpl implements BenhnhanService{
 	private ThongtinBNRepository thongtinRepo;
 	@Override
 	public Benhnhan addBenhnhan(Benhnhan benhnhan) {
-		Benhnhan _bacsy = this.benhnhanRepository.save(benhnhan);
-		return _bacsy;
+		Benhnhan _benhnhan = this.benhnhanRepository.save(benhnhan);
+		return _benhnhan;
 	}
 
 	@Override
@@ -57,9 +57,7 @@ public class BenhnhanServiceImpl implements BenhnhanService{
 
 	@Override
 	public List<Benhnhan> findBenhnhanByTen(String name) {
-		return this.benhnhanRepository.findAll().stream()
-				.filter(item ->item.getTen().toString().toLowerCase().contains(name.toLowerCase())).collect(Collectors.toList());	
-	
+		return this.benhnhanRepository.searchBenhnhanTheoTen(name);
 	}
 
 	@Override

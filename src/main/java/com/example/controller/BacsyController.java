@@ -33,7 +33,6 @@ public class BacsyController {
 	@GetMapping(produces = "application/json")
 	public ResponseEntity<?> getAllBacsy(){
 		List<Bacsy> _listBacsy = this.bacsyService.getAllBacsy();
-		_listBacsy.forEach(it -> {System.out.println(it.toString());});
 		if(_listBacsy != null) {
 			return new ResponseEntity<>(_listBacsy,HttpStatus.OK);
 		}else {

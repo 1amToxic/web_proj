@@ -48,8 +48,7 @@ public class ThuocServiceImpl implements ThuocService{
 
 	@Override
 	public List<Thuoc> findThuocByTen(String ten) {
-		return this.thuocRepository.findAll().stream()
-				.filter(item ->item.getTen().toString().toLowerCase().contains(ten.toLowerCase())).collect(Collectors.toList());	
+		return this.thuocRepository.searchThuocTheoTen(ten);
 	}
 
 	@Override
