@@ -31,6 +31,7 @@ public class Bacsy implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
+	
 	@Column(name = "trinhdo")
 	private String trinhDo;
 	@Column(name = "thamnien")
@@ -121,6 +122,12 @@ public class Bacsy implements Serializable{
 	}
 	public void setChitietkham(List<Chitietkham> chitietkham) {
 		this.chitietkham = chitietkham;
+	}
+	@Override
+	public String toString() {
+		return "Bacsy [id=" + id + ", trinhDo=" + trinhDo + ", thamNien=" + thamNien + ", chuyenMon=" + chuyenMon
+				+ ", bacNghe=" + bacNghe + ", cmt=" + cmt + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", diaChi="
+				+ diaChi + ", sdt=" + sdt + ", chitietkham=" + chitietkham + "]";
 	}
 	
 }

@@ -28,6 +28,7 @@ public class Thuoc implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
+	
 	@Column(name = "ten")
 	private String ten;
 	@Column(name = "dongia")

@@ -9,5 +9,4 @@ import com.example.model.Bacsy;
 
 @Repository
 public interface BacsyRepository extends JpaRepository<Bacsy, Integer>{
-	public List<Bacsy> findByTen(String ten);
 }

@@ -9,5 +9,4 @@ import com.example.model.Benhnhan;
 
 @Repository
 public interface BenhnhanRepository extends JpaRepository<Benhnhan, Integer>{
-	public List<Benhnhan> findByTen(String ten);
 }

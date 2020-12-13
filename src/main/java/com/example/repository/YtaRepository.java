@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 import com.example.model.Yta;
 @Repository
 public interface YtaRepository extends JpaRepository<Yta, Integer>{
-	public List<Yta> findByTen(String ten);
 }
