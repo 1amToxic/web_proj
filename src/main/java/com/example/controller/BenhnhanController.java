@@ -30,8 +30,6 @@ import com.example.service.benhnhan.BenhnhanService;
 public class BenhnhanController {
 	@Autowired
 	private BenhnhanService benhnhanService;
-	@Autowired
-	private ThongtinBNRepository thongtinRepo;
 	@GetMapping(produces = "application/json")
 	public ResponseEntity<?> getAllBenhnhan(){
 		List<Benhnhan> _listBenhnhan = this.benhnhanService.getAllBenhnhan();
@@ -71,8 +69,7 @@ public class BenhnhanController {
 	}
 	@GetMapping(value = "/info/{id}",produces = "application/json")
 	public ResponseEntity<?> getAllThongTin(@PathVariable int id){
-		List<ThongtinBenhnhan> listThongTin = this.thongtinRepo.getAllKhamChuaByBenhnhan(id);
-		listThongTin.forEach(it -> {System.out.print(it.toString());});
+		List<ThongtinBenhnhan> listThongTin = this.benhnhanService.getAllKhamchuaByBenhnhan(id);
 		if(listThongTin!=null) {
 			return new ResponseEntity<>(listThongTin,HttpStatus.OK);
 		}else {
