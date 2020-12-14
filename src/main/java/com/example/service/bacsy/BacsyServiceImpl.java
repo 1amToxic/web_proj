@@ -49,7 +49,6 @@ public class BacsyServiceImpl implements BacsyService{
 	}
 	@Override
 	public List<Bacsy> getAllBacsy() {
-		Calendar cal = Calendar.getInstance();
 		List<Bacsy> listBacsy = this.bacsyRepository.findAll();
 		return listBacsy;
 	}
